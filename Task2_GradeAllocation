@@ -1,0 +1,44 @@
+def main():
+    total_marks = 0
+    marks = []
+    average_percentage = 0
+
+    # Getting input
+    print("Enter subjects with marks (separated by a '-') in a comma separated list: "
+          "(subject1-mark1,subject2-mark2,subject3-mark3...)")
+    line = input().strip()
+    
+    # Working with input
+    subjects_list = line.split(",")
+    
+    for item in subjects_list:
+        subject, mark = item.split("-")
+        mark = int(mark)
+        marks.append(mark)
+        total_marks += mark
+
+        # Grade calculation
+        if mark > 74:
+            grade = "A"
+        elif mark > 69:
+            grade = "B"
+        elif mark > 59:
+            grade = "C"
+        elif mark > 49:
+            grade = "D"
+        else:
+            grade = "F"
+
+        # Output
+        print(f"{subject.ljust(8)} {grade}")
+
+    # Calculate average percentage
+    if len(marks) > 0:
+        average_percentage = total_marks / len(marks)
+    
+    # Output total marks and average percentage
+    print(f"Total marks: {total_marks}")
+    print(f"Average percentage: {average_percentage:.2f}%")
+
+if __name__ == "__main__":
+    main()
